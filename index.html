@@ -1,0 +1,69 @@
+<!-- Name: Oscar Chiqui | Midterm Project Fall Semester 2020 | This program is combined with the pokemon full list program (GitHub folder)
+To use this program you need to open the index document in the "Pokemon full list folder " to see the list of pokemon -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- The page title for this program -->
+    <title>Pokemon random list program</title>
+
+<!-- The web page (https://www.bootstrapcdn.com/bootswatch/) to design the bootstrap in the program which achieves a very nice effect on the web page.
+The CSS of this program is called pokemon_api.css which I add the link-->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="pokemon_api.css" />
+
+</head>
+<body>
+
+</div>
+<img src="logo2.png" class="logo" alt="">  <!-- In this section of the page I add a photo that refers to the topic  of the program. -->
+
+<h4>Hello welcome, In this search engine you can know the order of the pokemon based on the television series. (The 150 Original Pokemon)
+
+<h2>Here's an example, Type a number to display a Pokemon.</h2> <!-- In this section, I show a photo to demonstrate how the program works-->
+    <img src="example.PNG" alt="example" width="600" height="400">   
+</h4>
+
+<!-- I use this class id called "contenedor " to create the search box, the text that will be written in this case numbers based on the 150 pokemon-->
+
+<div class="contenedor">  
+    <input type="text" id="caja" placeholder="Enter the number of your pokemon"> <!-- You write the number of the pokemon from the API, which are 150 pokemon to choose from --> 
+    <button class="text-white btn bg-danger" id="button">Search</button>  <!-- when you click the search button-->
+    <img src="" id="img" class="pokemon" alt="">
+    <p id="info" class="text-white"></p>
+</div>
+
+<!-- -->
+    <script>
+        let buton=document.getElementById('button')
+//In this section I develop the button to give search, I add an addEventlistener to click on the mouse // 
+
+//AJAX Send a Request To a Server: To send a request to a server, we use the open() and send() methods of the XMLHttpRequest object:(Source: https://www.w3schools.com/xml/ajax_xmlhttprequest_send.asp)//
+        buton.addEventListener('click',()=>{
+            let caja=document.getElementById('caja').value
+            let img=document.getElementById('img')
+            let p=document.getElementById('info')
+            let xhttp=new XMLHttpRequest()
+            xhttp.open("GET",`https://pokeapi.co/api/v2/pokemon/${caja}`) 
+            xhttp.send()
+
+// The JSON.parse() method parses a JSON string, constructing the JavaScript value or object described by the string. ( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)
+            xhttp.onreadystatechange=function () {
+                if(this.readyState==4 && this.status==200)
+                {
+                let datoPokemon=JSON.parse( this.responseText)
+                console.log(datoPokemon)
+                img.setAttribute("src",datoPokemon.sprites.front_default)
+                p.textContent=datoPokemon.name
+                }
+            }
+
+        })
+    </script>
+
+</body>
+</html>

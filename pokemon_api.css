@@ -1,0 +1,47 @@
+/* Program CSS API_Pokemon.html - Oscar Chiqui - Fall 2020 | Midterm Project  */
+
+/* I liked the css gradient colors, they provide a nice design (Source: https://cssgradient.io/  */
+     body{
+        background: rgb(238,174,202);
+        background: linear-gradient(90deg, rgba(238,174,202,1) 26%, rgba(17,112,224,1) 100%);
+       }
+/* the modification of the logo is customizable, apply height and width and a margin */
+       .logo{
+        display: block;
+        margin: auto;
+        margin-bottom: 40px;
+        width: 300px;
+        height: 150px;
+       }
+/* The contenedor : show the layout to the search bar and the box to write text , also modify aspects based on the size I need .*/
+
+       .contenedor{
+           text-align: center;
+           margin: 0 auto;
+           height: 300px;
+           width: 350px;
+           display: flex;
+           justify-content: center;
+           align-content: center;
+           flex-direction: column;
+       }
+/* the contenedor : the text that will be written inside the box, which allows me to write "text-align" */
+
+       .contenedor input{
+           text-align: center;
+       }
+/* the modification of the margins of the buttons that I press on the page */
+       .contenedor button{
+           margin-top: 20px;
+           margin-bottom: -30px;
+       }
+/* This part is important, thanks to css I can modify the result (pokemon) it will be its size and what space it will occupy on the web page */
+       .pokemon{
+           width: 150px;
+           height: 150px;
+           margin: 40px auto;
+           display: inline-block;
+       }
+       p{
+           margin-top: -60px;
+       }
